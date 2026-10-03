@@ -277,7 +277,7 @@ function optionCard(o){
   var badges=(o.premium?'<span class="badge gold">PREMIUM</span>':'')+(o.pops?'<span class="badge">POPS</span>':'');
   return '<article class="option-card'+selectedClass+premiumClass+'" data-option="'+o.id+'">'+
     (o.premium?goldRain(9):'')+
-    '<div class="option-thumb text">'+o.icon+'</div>'+
+    '<div class="option-thumb">'+ico(categoryIcon(state.category))+'<span class="thumb-code">'+o.icon+'</span></div>'+
     '<div class="option-copy"><b>'+o.name+' '+badges+'</b><small>'+o.note+'</small></div>'+
     '<div class="option-price">'+priceHtml(o.price)+'</div>'+
   '</article>';

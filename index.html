@@ -4,196 +4,156 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="color-scheme" content="dark" />
-  <title>APEX Tuning UI</title>
+  <title>Custom Tuning UI</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <svg class="svg-defs" aria-hidden="true">
-    <symbol id="i-logo" viewBox="0 0 32 32"><path d="M5 23 14 6h4l9 17h-5l-2-4h-8l-2 4H5Z"/><path d="M14 15h4l-2-4-2 4Z"/></symbol>
-    <symbol id="i-paint" viewBox="0 0 24 24"><path d="M12 3a9 9 0 1 0 0 18h1.2a2.4 2.4 0 0 0 1.2-4.5l-.3-.2c-.5-.3-.3-1.1.3-1.1H17a4 4 0 0 0 4-4A8.5 8.5 0 0 0 12 3Z"/><circle cx="7.4" cy="11.4" r="1"/><circle cx="10" cy="7.5" r="1"/><circle cx="15" cy="7.5" r="1"/></symbol>
-    <symbol id="i-engine" viewBox="0 0 24 24"><path d="M7 7h10l2 3v7l-2 2H8l-2-2v-2H3v-5h3V8l1-1Z"/><path d="M9 4h6M9 12h6M12 12v4"/></symbol>
-    <symbol id="i-suspension" viewBox="0 0 24 24"><path d="M6 3v3l3 2-6 3 6 3-6 3 6 3v1M18 3v3l3 2-6 3 6 3-6 3 6 3v1"/></symbol>
-    <symbol id="i-armor" viewBox="0 0 24 24"><path d="M12 3 19 6v5c0 4.8-2.8 8.1-7 10-4.2-1.9-7-5.2-7-10V6l7-3Z"/><path d="m9 12 2 2 4-4"/></symbol>
-    <symbol id="i-body" viewBox="0 0 24 24"><path d="M4 14 6.5 9h11L20 14"/><path d="M3 14h18v4H3z"/><circle cx="7" cy="18" r="2"/><circle cx="17" cy="18" r="2"/></symbol>
-    <symbol id="i-livery" viewBox="0 0 24 24"><path d="M5 4h14v16H5z"/><path d="m5 14 14-6M5 18 19 12"/></symbol>
-    <symbol id="i-neon" viewBox="0 0 24 24"><path d="M4 17h16M7 13h10l2 4H5l2-4Z"/><path d="M8 20h8"/></symbol>
-    <symbol id="i-headlight" viewBox="0 0 24 24"><path d="M7 6c4 0 6 2.3 6 6s-2 6-6 6H4V6h3Z"/><path d="m16 8 4-2M16.5 12H21M16 16l4 2"/></symbol>
-    <symbol id="i-smoke" viewBox="0 0 24 24"><path d="M4 17c0-2 1.4-3 3.2-3 0-2.3 1.5-4 3.8-4 2.1 0 3.4 1.2 3.8 2.8 2.7-.2 5.2 1.2 5.2 4.2H4Z"/><path d="M6 9c.4-2 2-3 4-3M13 7c.3-1.4 1.5-2.4 3-2.4"/></symbol>
-    <symbol id="i-wheel" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3"/><path d="M12 3v6M12 15v6M3 12h6M15 12h6M5.6 5.6l4.2 4.2M14.2 14.2l4.2 4.2M18.4 5.6l-4.2 4.2M9.8 14.2l-4.2 4.2"/></symbol>
-    <symbol id="i-sound" viewBox="0 0 24 24"><path d="M5 14h3l4 4V6L8 10H5v4Z"/><path d="M16 9c1.5 1.6 1.5 4.4 0 6M19 6c3 3.2 3 8.8 0 12"/></symbol>
+    <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6"/><path d="m16 16 4 4"/></symbol>
+    <symbol id="i-close" viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18"/></symbol>
     <symbol id="i-cart" viewBox="0 0 24 24"><path d="M4 5h2l2 10h9l2-7H7"/><circle cx="10" cy="19" r="1.5"/><circle cx="17" cy="19" r="1.5"/></symbol>
     <symbol id="i-cash" viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="12" rx="2"/><circle cx="12" cy="12" r="3"/><path d="M6 9h.01M18 15h.01"/></symbol>
     <symbol id="i-bank" viewBox="0 0 24 24"><path d="m3 10 9-6 9 6"/><path d="M5 10h14M6 10v7M10 10v7M14 10v7M18 10v7M4 20h16"/></symbol>
     <symbol id="i-diamond" viewBox="0 0 24 24"><path d="m4 8 4-4h8l4 4-8 12L4 8Z"/><path d="m8 4 4 16 4-16M4 8h16"/></symbol>
     <symbol id="i-lei" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9 7v10h6M9 12h5"/></symbol>
-    <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6"/><path d="m16 16 4 4"/></symbol>
-    <symbol id="i-close" viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18"/></symbol>
-    <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12 4 4L19 6"/></symbol>
-    <symbol id="i-menu" viewBox="0 0 24 24"><path d="M5 7h14M5 12h14M5 17h14"/></symbol>
-    <symbol id="i-chevron" viewBox="0 0 24 24"><path d="m9 6 6 6-6 6"/></symbol>
     <symbol id="i-reset" viewBox="0 0 24 24"><path d="M20 6v5h-5"/><path d="M18 9a7 7 0 1 0 1 6"/></symbol>
-    <symbol id="i-star" viewBox="0 0 24 24"><path d="m12 3 2.6 5.3 5.9.9-4.3 4.1 1 5.8-5.2-2.8-5.2 2.8 1-5.8-4.3-4.1 5.9-.9L12 3Z"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12 4 4L19 6"/></symbol>
   </svg>
 
-  <div id="app" class="app">
-    <header class="topbar glass">
-      <div class="brand">
-        <span class="brand-mark"><svg><use href="#i-logo"/></svg></span>
-        <div>
-          <b>APEX <em>TUNING</em></b>
-          <small>VEHICLE CUSTOMIZATION</small>
-        </div>
+  <main id="app" class="app">
+    <header class="hud-head">
+      <div class="title-lockup">
+        <b><span>CUSTOM</span> TUNING</b>
+        <small>Customize your vehicle</small>
       </div>
 
-      <nav class="top-tabs">
-        <button class="active" data-top="tuning">TUNING</button>
-        <button data-top="build">BUILD</button>
-        <button data-top="info">INFO</button>
-        <i></i>
-      </nav>
-
-      <div class="wallet">
-        <div class="money cash"><span><svg><use href="#i-cash"/></svg></span><div><small>CASH</small><b id="cashBalance">$ 12.650.000</b></div></div>
-        <div class="money bank"><span><svg><use href="#i-bank"/></svg></span><div><small>BANK</small><b id="bankBalance">$ 287.066.000</b></div></div>
-        <div class="money diamond"><span><svg><use href="#i-diamond"/></svg></span><div><small>DIAMANTE</small><b id="diamondBalance">1.844</b></div></div>
-        <div class="money lei"><span><svg><use href="#i-lei"/></svg></span><div><small>LEI</small><b id="leiBalance">1.250</b></div></div>
+      <div class="wallet" aria-label="Balances">
+        <div class="wallet-chip cash"><svg><use href="#i-cash"/></svg><span><small>CASH</small><b id="cashBalance">$ 12.650.000</b></span></div>
+        <div class="wallet-chip bank"><svg><use href="#i-bank"/></svg><span><small>BANK</small><b id="bankBalance">$ 287.066.000</b></span></div>
+        <div class="wallet-chip diamond"><svg><use href="#i-diamond"/></svg><span><small>DIAMANTE</small><b id="diamondBalance">1.844</b></span></div>
+        <div class="wallet-chip lei"><svg><use href="#i-lei"/></svg><span><small>LEI</small><b id="leiBalance">1.250</b></span></div>
+        <button id="closeGui" class="exit-btn">EXIT</button>
       </div>
-
-      <button class="exit-button" id="closeGui">EXIT</button>
     </header>
 
-    <section class="left-shell glass">
-      <aside class="category-rail" id="categoryRail"></aside>
+    <section class="left-layout">
+      <aside class="category-rail" id="categoryRail" aria-label="Tuning categories"></aside>
 
-      <div class="catalog">
-        <div class="catalog-head">
+      <section class="parts-panel">
+        <div class="parts-head">
           <div>
-            <span id="categoryIndex">01 / COLORS</span>
+            <span id="categoryKicker">01 / COLORS</span>
             <h1 id="categoryTitle">Paint & Finish</h1>
-            <p id="categoryDescription">Choose a finish, color and material.</p>
+            <p id="categoryDescription">Choose a finish and color.</p>
           </div>
-          <button class="icon-button" id="resetCategory" title="Reset"><svg><use href="#i-reset"/></svg></button>
+          <button class="icon-btn" id="resetCategory" title="Reset category"><svg><use href="#i-reset"/></svg></button>
         </div>
 
-        <label class="search-box">
+        <label class="search-row">
           <svg><use href="#i-search"/></svg>
-          <input id="searchInput" type="search" placeholder="Search tuning parts" autocomplete="off">
+          <input id="searchInput" type="search" placeholder="Search parts" autocomplete="off" />
         </label>
 
-        <div class="catalog-scroll" id="catalogScroll">
-          <div id="catalogContent"></div>
+        <div id="partsScroll" class="parts-scroll">
+          <div id="partsContent"></div>
         </div>
-        <div class="edge-fade"></div>
-      </div>
+        <div class="parts-fade"></div>
+      </section>
     </section>
 
-    <section class="right-shell glass">
+    <aside class="config-panel">
       <div class="config-head">
         <span>CONFIGURATION</span>
-        <h2 id="selectedTitle">Nothing selected</h2>
+        <h2 id="selectedTitle">Factory setup</h2>
         <p id="selectedSubtitle">Choose a part to preview it.</p>
       </div>
 
-      <div class="selected-preview" id="selectedPreview">
-        <div class="selected-icon"><svg><use href="#i-star"/></svg></div>
+      <div id="selectedPreview" class="selected-preview">
+        <div id="selectedArt" class="selected-art"></div>
         <div>
           <small>LIVE PREVIEW</small>
-          <b id="selectedName">Factory setup</b>
+          <b id="selectedName">Nothing selected</b>
           <span id="selectedPrice">—</span>
         </div>
       </div>
 
-      <div class="spec-block">
-        <div class="spec-head"><span>BUILD IMPACT</span><small>LIVE</small></div>
-        <div class="spec-row"><span>POWER</span><i><b id="impactPower"></b></i><em id="impactPowerText">+0%</em></div>
-        <div class="spec-row"><span>HANDLING</span><i><b id="impactHandling"></b></i><em id="impactHandlingText">+0%</em></div>
-        <div class="spec-row"><span>STYLE</span><i><b id="impactStyle"></b></i><em id="impactStyleText">+0%</em></div>
+      <div class="impact-box">
+        <div class="section-head"><span>BUILD IMPACT</span><small>LIVE</small></div>
+        <div class="impact-row"><span>POWER</span><i><b id="impactPower"></b></i><em id="impactPowerText">+0%</em></div>
+        <div class="impact-row"><span>HANDLING</span><i><b id="impactHandling"></b></i><em id="impactHandlingText">+0%</em></div>
+        <div class="impact-row"><span>STYLE</span><i><b id="impactStyle"></b></i><em id="impactStyleText">+0%</em></div>
       </div>
 
-      <div class="spec-block build-list-block">
-        <div class="spec-head"><span>BUILD QUEUE</span><small id="buildCount">0 ITEMS</small></div>
-        <div class="mini-build" id="miniBuild">
-          <div class="mini-empty">No parts queued.</div>
-        </div>
+      <div class="queue-box">
+        <div class="section-head"><span>BUILD QUEUE</span><small id="buildCount">0 ITEMS</small></div>
+        <div id="miniBuild" class="mini-build"><div class="mini-empty">No parts queued.</div></div>
       </div>
 
-      <div class="right-bottom">
-        <div class="total-line">
+      <div class="config-bottom">
+        <div class="build-total">
           <div><small>BUILD TOTAL</small><b id="buildTotal">No parts selected</b></div>
-          <button class="cart-open" id="openCart"><svg><use href="#i-cart"/></svg><span id="cartBadge">0</span></button>
+          <button id="openCart" class="cart-btn"><svg><use href="#i-cart"/></svg><span id="cartBadge">0</span></button>
         </div>
         <div class="action-row">
-          <button class="secondary" id="undoPreview">UNDO</button>
-          <button class="primary" id="addToBuild" disabled>ADD TO BUILD</button>
+          <button id="undoPreview" class="ghost-btn">UNDO</button>
+          <button id="addToBuild" class="add-btn" disabled>ADD TO BUILD</button>
         </div>
       </div>
+    </aside>
+
+    <section id="cartTarget" class="cart-stage" aria-label="Build cart">
+      <canvas id="cartCanvas"></canvas>
+      <div id="cartSlots" class="cart-slots"></div>
+      <div class="cart-caption"><span>BUILD CART</span><b id="cart3dCount">0</b></div>
     </section>
 
-    <div class="cart-3d-wrap" id="cartTarget">
-      <canvas id="cartCanvas" width="180" height="150" aria-label="3D shopping cart"></canvas>
-      <div class="cart-3d-label"><span>BUILD CART</span><b id="cart3dCount">0</b></div>
-    </div>
-
-    <aside class="cart-drawer glass" id="cartDrawer">
+    <aside id="cartDrawer" class="cart-drawer">
       <div class="drawer-head">
         <div><span>SHOPPING CART</span><h2>Your build</h2></div>
-        <button class="icon-button" id="closeCart"><svg><use href="#i-close"/></svg></button>
+        <button id="closeCart" class="icon-btn"><svg><use href="#i-close"/></svg></button>
       </div>
-      <div class="cart-items" id="cartItems"></div>
-      <div class="cart-empty" id="cartEmpty">
+      <div id="cartItems" class="cart-items"></div>
+      <div id="cartEmpty" class="cart-empty">
         <svg><use href="#i-cart"/></svg>
         <b>Your cart is empty</b>
-        <span>Add tuning parts from the catalog.</span>
+        <span>Add tuning parts from the list.</span>
       </div>
       <div class="cart-totals">
         <div><span>Cash</span><b id="totalCash">$ 0</b></div>
         <div><span>Diamante</span><b id="totalDiamonds">0 ◆</b></div>
         <div><span>Lei</span><b id="totalLei">0 L</b></div>
       </div>
-      <button class="checkout" id="checkoutButton" disabled>PAY & INSTALL <svg><use href="#i-check"/></svg></button>
-      <button class="clear-cart" id="clearCart">Clear build</button>
+      <button id="checkoutButton" class="checkout-btn" disabled>PAY & INSTALL <svg><use href="#i-check"/></svg></button>
+      <button id="clearCart" class="clear-cart">Clear build</button>
     </aside>
 
-    <div class="payment-layer" id="paymentLayer" aria-hidden="true">
-      <div class="payment-stage">
-        <div class="payment-copy">
-          <span>PAYMENT IN PROGRESS</span>
-          <b id="paymentModeLabel">CARD INSERT</b>
-          <small>Do not close the tuning menu</small>
-        </div>
-
-        <div class="terminal-wrap" id="terminalWrap">
-          <svg class="terminal-svg" viewBox="0 0 220 300">
-            <g class="terminal">
-              <rect x="55" y="42" width="110" height="214" rx="22" fill="#202426" stroke="#3d65c7" stroke-width="4"/>
-              <rect x="65" y="92" width="90" height="118" rx="8" fill="#111516" stroke="#080909" stroke-width="4"/>
-              <rect x="64" y="56" width="92" height="27" rx="8" fill="#2c3133"/>
-              <path d="M103 69c4-5 10-5 14 0M107 73c2-2 4-2 6 0" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
-              <circle cx="110" cy="151" r="28" fill="#00bf63" class="pay-check-circle"/>
-              <path d="m98 151 8 8 16-18" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" class="pay-check-mark"/>
-              <rect x="165" y="103" width="4" height="114" rx="2" fill="#4b5d72"/>
-              <circle cx="110" cy="89" r="2.6" fill="#596064"/>
-            </g>
-            <g class="pay-card">
-              <rect x="65" y="225" width="96" height="58" rx="7" fill="#3993ff"/>
-              <rect x="76" y="237" width="17" height="12" rx="3" fill="#eef4ff"/>
-              <path d="M100 243c5-6 11-6 16 0M105 246c2-2 4-2 6 0" fill="none" stroke="#ffb400" stroke-width="2.2" stroke-linecap="round"/>
-              <text x="77" y="263" font-size="8" fill="#fff" font-family="monospace">1234 5678 9012 3456</text>
-              <text x="133" y="275" font-size="9" font-weight="800" fill="#fff" font-family="Arial">VISA</text>
-            </g>
-          </svg>
-        </div>
+    <div id="paymentLayer" class="payment-layer">
+      <div class="payment-card">
+        <span>PAYMENT IN PROGRESS</span>
+        <b id="paymentModeLabel">CARD INSERT</b>
+        <small>Menu locked until the animation finishes</small>
+        <svg class="terminal-svg" viewBox="0 0 220 300">
+          <g>
+            <rect x="55" y="42" width="110" height="214" rx="18" fill="#202426" stroke="#3d65c7" stroke-width="4"/>
+            <rect x="65" y="92" width="90" height="118" rx="7" fill="#101415" stroke="#080909" stroke-width="4"/>
+            <rect x="64" y="56" width="92" height="27" rx="7" fill="#2c3133"/>
+            <path d="M103 69c4-5 10-5 14 0M107 73c2-2 4-2 6 0" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
+            <circle cx="110" cy="151" r="28" fill="#00bf63" class="pay-check-circle"/>
+            <path d="m98 151 8 8 16-18" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" class="pay-check-mark"/>
+          </g>
+          <g class="pay-card">
+            <rect x="65" y="225" width="96" height="58" rx="7" fill="#3993ff"/>
+            <rect x="76" y="237" width="17" height="12" rx="3" fill="#eef4ff"/>
+            <text x="77" y="263" font-size="8" fill="#fff" font-family="monospace">1234 5678 9012 3456</text>
+            <text x="133" y="275" font-size="9" font-weight="800" fill="#fff" font-family="Arial">VISA</text>
+          </g>
+        </svg>
       </div>
     </div>
 
-    <div class="close-shield" id="closeShield">PURCHASE ANIMATION — PLEASE WAIT</div>
-
-    <div class="closed-screen" id="closedScreen">
-      <button id="reopenUi">OPEN TUNING UI</button>
-    </div>
-
-    <div class="toast-stack" id="toastStack"></div>
-  </div>
+    <div id="closedScreen" class="closed-screen"><button id="reopenUi">OPEN TUNING UI</button></div>
+    <div id="toastStack" class="toast-stack"></div>
+  </main>
 
   <script src="app.js"></script>
 </body>

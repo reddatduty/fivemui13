@@ -98,7 +98,7 @@ svg{width:1em;height:1em;fill:none;stroke:currentColor;stroke-width:1.75;stroke-
 .option-card.selected{border-color:rgba(105,255,150,.27);background:rgba(105,255,150,.04);box-shadow:inset 0 1px 0 rgba(255,255,255,.035),0 10px 24px rgba(0,0,0,.12)}.option-card.selected::before{opacity:1}
 .option-card.premium{border-color:rgba(255,214,107,.16);background:linear-gradient(110deg,rgba(255,214,107,.045),rgba(255,255,255,.018))}
 .option-thumb{width:41px;height:41px;border-radius:10px;display:grid;place-items:center;background:linear-gradient(145deg,rgba(255,255,255,.055),rgba(255,255,255,.018));border:1px solid rgba(255,255,255,.055);color:#98a49e;position:relative;z-index:2}
-.option-thumb svg{width:19px;height:19px}.option-thumb.text{font-size:8px;font-weight:900;letter-spacing:.05em}
+.option-thumb svg{width:20px;height:20px;opacity:.82}.option-thumb{overflow:hidden}.thumb-code{position:absolute;right:3px;bottom:2px;min-width:15px;height:11px;padding:0 3px;border-radius:4px;display:grid;place-items:center;background:rgba(4,7,6,.78);border:1px solid rgba(255,255,255,.07);font-size:4.8px;font-weight:950;letter-spacing:.03em;color:#d9e2dd}
 .option-copy{position:relative;z-index:2;min-width:0}.option-copy b{display:flex;align-items:center;gap:5px;font-size:9.5px}.option-copy small{display:block;margin-top:3px;font-size:7px;color:#66736c;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .option-price{position:relative;z-index:2;text-align:right;font-size:7.5px;color:#aeb9b3}
 .price{display:inline-flex;align-items:center;gap:3px}.price svg{width:9px;height:9px}.price.cash{color:var(--green)}.price.diamond{color:var(--cyan)}.price.lei{color:var(--gold)}

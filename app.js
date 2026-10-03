@@ -231,7 +231,7 @@ function renderParts(){
   bindParts();
 }
 function bindParts(){
-  $$('[data-option]',el.content).forEach(function(node){node.onclick=function(){var item=findOption(state.category,node.dataset.option);if(item)selectItem(item,node);};});
+  $('[data-option]',el.content).forEach(function(node){node.onclick=function(){if(state.category==='paint'&&node.dataset.option==='paint-current'){if(state.preview){state.preview.source=node;updateSelected();}return;}var item=findOption(state.category,node.dataset.option);if(item)selectItem(item,node);};});
   $$('[data-finish]',el.content).forEach(function(btn){btn.onclick=function(){state.finish=btn.dataset.finish;previewPaint(btn);renderParts();};});
   $$('[data-color]',el.content).forEach(function(btn){btn.onclick=function(){state.color=btn.dataset.color;previewPaint(btn);renderParts();};});
   $$('[data-light]',el.content).forEach(function(btn){btn.onclick=function(){var item=lightOptions(state.category).find(function(o){return o.id===btn.dataset.light;});if(item)selectItem(item,btn);};});
@@ -260,7 +260,7 @@ async function addPreview(){
   if(!state.preview||state.adding||state.locked)return;
   state.adding=true;
   var p=state.preview,key=cartKey(p.category,p.item);
-  var source=p.source||$('.option-card.selected,.stage-card.selected',el.content)||$('.option-card',el.content);
+  var source=p.category==='paint'?$('.option-card[data-option="paint-current"]',el.content):(p.source||$('.option-card.selected,.stage-card.selected',el.content)||$('.option-card',el.content));
   var slot=randomCartPoint(key);
   await flyCard(source,slot,p.item.premium);
   state.cart.set(key,{key:key,category:p.category,name:p.item.name,price:Object.assign({},p.item.price||{}),item:p.item,slot:slot});
@@ -270,9 +270,7 @@ async function addPreview(){
   toast('Added <b>'+p.item.name+'</b> to the cart');
 }
 function randomCartPoint(key){
-  var h=hash(key+':slot');
-  var x=18+(h%65),y=22+((h>>8)%48),r=-18+((h>>16)%37);
-  return{x:x,y:y,r:r};
+  return{x:18+Math.random()*64,y:20+Math.random()*48,r:-20+Math.random()*40};
 }
 function flyCard(source,slot,premium){
   return new Promise(function(resolve){

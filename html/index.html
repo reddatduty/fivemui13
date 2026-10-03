@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="color-scheme" content="dark" />
+  <title>APEX Tuning</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <svg class="svg-defs" aria-hidden="true">
+    <symbol id="i-paint" viewBox="0 0 24 24"><path d="M12 3a9 9 0 1 0 0 18h1.2a2.3 2.3 0 0 0 1.2-4.27l-.3-.18c-.53-.31-.31-1.12.3-1.12H17A4 4 0 0 0 21 11.4 8.4 8.4 0 0 0 12 3Z"/><circle cx="7.5" cy="11.5" r="1"/><circle cx="10" cy="7.5" r="1"/><circle cx="15" cy="7.5" r="1"/></symbol>
+    <symbol id="i-engine" viewBox="0 0 24 24"><path d="M7 7h10l2 3v7l-2 2H8l-2-2v-2H3v-5h3V8l1-1Z"/><path d="M9 4h6M9 12h6M12 12v4"/></symbol>
+    <symbol id="i-suspension" viewBox="0 0 24 24"><path d="M6 3v3l3 2-6 3 6 3-6 3 6 3v1M18 3v3l3 2-6 3 6 3-6 3 6 3v1"/></symbol>
+    <symbol id="i-armor" viewBox="0 0 24 24"><path d="M12 3 19 6v5c0 4.8-2.8 8.1-7 10-4.2-1.9-7-5.2-7-10V6l7-3Z"/><path d="m9 12 2 2 4-4"/></symbol>
+    <symbol id="i-body" viewBox="0 0 24 24"><path d="M4 14 6 9h12l2 5"/><path d="M3 14h18v4H3z"/><circle cx="7" cy="18" r="2"/><circle cx="17" cy="18" r="2"/></symbol>
+    <symbol id="i-livery" viewBox="0 0 24 24"><path d="M5 4h14v16H5z"/><path d="m5 14 14-6M5 18 19 12"/></symbol>
+    <symbol id="i-neon" viewBox="0 0 24 24"><path d="M4 17h16M7 13h10l2 4H5l2-4Z"/><path d="M8 20h8"/></symbol>
+    <symbol id="i-headlight" viewBox="0 0 24 24"><path d="M7 6c4 0 6 2.3 6 6s-2 6-6 6H4V6h3Z"/><path d="m16 8 4-2M16.5 12H21M16 16l4 2"/></symbol>
+    <symbol id="i-smoke" viewBox="0 0 24 24"><path d="M4 17c0-2 1.4-3 3.2-3 0-2.3 1.5-4 3.8-4 2.1 0 3.4 1.2 3.8 2.8 2.7-.2 5.2 1.2 5.2 4.2H4Z"/><path d="M6 9c.4-2 2-3 4-3M13 7c.3-1.4 1.5-2.4 3-2.4"/></symbol>
+    <symbol id="i-wheel" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3"/><path d="M12 3v6M12 15v6M3 12h6M15 12h6M5.6 5.6l4.2 4.2M14.2 14.2l4.2 4.2M18.4 5.6l-4.2 4.2M9.8 14.2l-4.2 4.2"/></symbol>
+    <symbol id="i-sound" viewBox="0 0 24 24"><path d="M5 14h3l4 4V6L8 10H5v4Z"/><path d="M16 9c1.5 1.6 1.5 4.4 0 6M19 6c3 3.2 3 8.8 0 12"/></symbol>
+    <symbol id="i-diamond" viewBox="0 0 24 24"><path d="m4 8 4-4h8l4 4-8 12L4 8Z"/><path d="m8 4 4 16 4-16M4 8h16"/></symbol>
+    <symbol id="i-cash" viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="12" rx="2"/><circle cx="12" cy="12" r="3"/><path d="M6 9h.01M18 15h.01"/></symbol>
+    <symbol id="i-bank" viewBox="0 0 24 24"><path d="m3 10 9-6 9 6"/><path d="M5 10h14M6 10v7M10 10v7M14 10v7M18 10v7M4 20h16"/></symbol>
+    <symbol id="i-lei" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9 7v10h6M9 12h5"/></symbol>
+    <symbol id="i-cart" viewBox="0 0 24 24"><path d="M4 5h2l2 10h9l2-7H7"/><circle cx="10" cy="19" r="1.5"/><circle cx="17" cy="19" r="1.5"/></symbol>
+    <symbol id="i-close" viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12 4 4L19 6"/></symbol>
+    <symbol id="i-chevron" viewBox="0 0 24 24"><path d="m9 6 6 6-6 6"/></symbol>
+    <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6"/><path d="m16 16 4 4"/></symbol>
+    <symbol id="i-reset" viewBox="0 0 24 24"><path d="M20 6v5h-5"/><path d="M18 9a7 7 0 1 0 1 6"/></symbol>
+  </svg>
+
+  <main id="app" class="app is-visible" aria-label="Vehicle tuning">
+    <div class="vignette"></div>
+    <div class="ambient ambient-a"></div>
+    <div class="ambient ambient-b"></div>
+
+    <header class="topbar">
+      <div class="brand-block">
+        <div class="brand-mark"><span></span><span></span><span></span></div>
+        <div>
+          <div class="brand">APEX <strong>TUNING</strong></div>
+          <div class="vehicle-line"><span id="vehicleName">OBEY 10F</span><i></i><span id="vehiclePlate">RED 013</span></div>
+        </div>
+      </div>
+
+      <div class="session-status">
+        <span class="pulse-dot"></span>
+        <div>
+          <b>LIVE PREVIEW</b>
+          <small>Changes are temporary until checkout</small>
+        </div>
+      </div>
+
+      <div class="wallet" id="wallet">
+        <div class="balance cash">
+          <span class="balance-icon"><svg><use href="#i-cash"/></svg></span>
+          <span><small>CASH</small><b id="cashBalance">$ 12.650.000</b></span>
+        </div>
+        <div class="balance bank">
+          <span class="balance-icon"><svg><use href="#i-bank"/></svg></span>
+          <span><small>BANK</small><b id="bankBalance">$ 287.066.000</b></span>
+        </div>
+        <div class="balance diamond">
+          <span class="balance-icon"><svg><use href="#i-diamond"/></svg></span>
+          <span><small>DIAMANTE</small><b id="diamondBalance">1.844</b></span>
+        </div>
+        <div class="balance lei">
+          <span class="balance-icon"><svg><use href="#i-lei"/></svg></span>
+          <span><small>LEI</small><b id="leiBalance">1.250</b></span>
+        </div>
+      </div>
+    </header>
+
+    <aside class="category-rail" id="categoryRail" aria-label="Tuning categories"></aside>
+
+    <section class="panel glass" id="contentPanel">
+      <div class="panel-head">
+        <div>
+          <div class="eyebrow" id="panelEyebrow">EXTERIOR</div>
+          <h1 id="panelTitle">Paint & Finish</h1>
+          <p id="panelDescription">Build the exact finish you want. Preview every change before adding it to your build.</p>
+        </div>
+        <button class="icon-button close-ui" id="closeUi" title="Close"><svg><use href="#i-close"/></svg></button>
+      </div>
+
+      <div class="panel-tools">
+        <label class="search-box">
+          <svg><use href="#i-search"/></svg>
+          <input id="optionSearch" type="search" placeholder="Search options" autocomplete="off" />
+        </label>
+        <button class="mini-button" id="resetCategory"><svg><use href="#i-reset"/></svg> Reset</button>
+      </div>
+
+      <div class="content-scroll" id="contentScroll">
+        <div id="categoryContent"></div>
+      </div>
+
+      <div class="panel-fade"></div>
+    </section>
+
+    <section class="vehicle-hud">
+      <div class="vehicle-card glass-soft">
+        <div class="vehicle-card-top">
+          <span>PROJECT VEHICLE</span>
+          <strong id="vehicleHudName">OBEY 10F</strong>
+        </div>
+        <div class="spec-row">
+          <div><small>STOCK TOP</small><b id="stockSpeed">205</b><em>KM/H</em></div>
+          <div><small>PROJECTED</small><b id="projectedSpeed">205</b><em>KM/H</em></div>
+          <div><small>GAIN</small><b id="speedGain">+0%</b><em>TOP SPEED</em></div>
+        </div>
+        <div class="power-meter"><span id="powerMeter"></span></div>
+      </div>
+      <div class="camera-help">
+        <span><kbd>RMB</kbd> Rotate camera</span>
+        <span><kbd>WHEEL</kbd> Zoom</span>
+        <span><kbd>ESC</kbd> Exit</span>
+      </div>
+    </section>
+
+    <button class="build-fab glass" id="buildFab">
+      <span class="fab-icon"><svg><use href="#i-cart"/></svg><i id="cartCount">0</i></span>
+      <span class="fab-copy"><small>CURRENT BUILD</small><b id="fabTotal">No parts selected</b></span>
+      <svg class="fab-chevron"><use href="#i-chevron"/></svg>
+    </button>
+
+    <aside class="cart-drawer glass" id="cartDrawer" aria-label="Current build">
+      <div class="cart-head">
+        <div>
+          <span class="eyebrow">CHECKOUT</span>
+          <h2>Your build</h2>
+        </div>
+        <button class="icon-button" id="closeCart"><svg><use href="#i-close"/></svg></button>
+      </div>
+
+      <div class="cart-items" id="cartItems"></div>
+
+      <div class="cart-empty" id="cartEmpty">
+        <div class="empty-ring"><svg><use href="#i-cart"/></svg></div>
+        <b>No upgrades queued</b>
+        <span>Select an option, preview it, then add it to your build.</span>
+      </div>
+
+      <div class="cart-summary">
+        <div class="summary-line"><span>Cash</span><b id="totalCash">$0</b></div>
+        <div class="summary-line"><span>Diamante</span><b id="totalDiamonds">0 ◆</b></div>
+        <div class="summary-line"><span>Lei</span><b id="totalLei">0 L</b></div>
+      </div>
+
+      <div class="checkout-note"><span class="pulse-dot"></span> All parts will be installed together after payment.</div>
+      <button class="checkout-button" id="checkoutButton" disabled>
+        <span>PAY & INSTALL</span>
+        <svg><use href="#i-check"/></svg>
+      </button>
+      <button class="clear-build" id="clearBuild">Clear build</button>
+    </aside>
+
+    <div class="toast-stack" id="toastStack"></div>
+
+    <div class="confirm-layer" id="confirmLayer">
+      <div class="confirm-card glass">
+        <div class="confirm-icon"><svg><use href="#i-check"/></svg></div>
+        <h2>Install this build?</h2>
+        <p>Your selected upgrades will be charged and installed together.</p>
+        <div class="confirm-totals" id="confirmTotals"></div>
+        <div class="confirm-actions">
+          <button class="secondary-button" id="cancelCheckout">Cancel</button>
+          <button class="primary-button" id="confirmCheckout">Confirm purchase</button>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>

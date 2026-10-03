@@ -2,23 +2,24 @@
 
 Standalone browser-only GTA V / FiveM tuning UI prototype.
 
-Open `index.html` directly in a browser. No server, Lua, framework, npm, or build step is required.
+Open `index.html` directly in a browser.
 
-## Current prototype
+## Current build
 
-- Transparent UI only — no fake garage, lights, scene, or decorative page background
-- Reference-style left tuning catalog + right configuration panel
-- Liquid / soft glass surfaces
+- Transparent center area for the actual GTA/FiveM vehicle
+- Reference-style left tuning rail + adjacent parts panel + right configuration panel
+- Much squarer, denser UI with less rounded styling
+- 40+ separate tuning tabs, including individual body systems such as Spoiler, Front Bumper, Rear Bumper, Side Skirts, Exhaust, Frame, Grille, Hood, Fenders, Roof, Plate Holder, Interior Trim, Dashboard, Seats, Steering Wheel, Shifter, Trunk, Engine Block, Air Filter, Struts, Arch Covers, Aerials, Fuel Tank and more
+- Custom colorful SVG artwork for every tuning category and product thumbnail
+- Premium items use falling-gold particles
+- Stationary 3D shopping cart rendered from the uploaded `model.gltf` geometry
+- The cart does not spin
+- Add-to-build animation moves the entire selected upgrade card from its real screen position to the foreground/center first, then shrinks/arcs it into a random position inside the cart
+- Cart-entry impact particles appear only at the final drop point
+- Full shopping-cart drawer and multi-currency totals
 - Cash, Bank, Diamante and Lei balances
-- Colors: Normal, Matte, Metallic, Chrome and Chameleon
-- Engine Stage 1–4 and premium Stage 4 Turbo
-- Suspension, armor, body components, liveries, neon, headlights, tire smoke, wheels
-- 30 engine sound presets from 12kk to 500kk
-- Custom SVG icons and illustrated option thumbnails
-- Premium items have continuous falling-gold particles
-- Exact low-poly geometry extracted from the uploaded `model.gltf` is rendered as the 3D shopping cart
-- Adding a part animates the selected tuning card along a curved path into the 3D cart
-- Cart reacts physically with bounce, rotation and particle impact
-- Checkout randomly plays one of three separate payment sequences based on the uploaded Bancard POS animation: card insert, card swipe, or contactless tap
-- The tuning UI is locked during the purchase animation and automatically closes only after it finishes
-- Browser demo includes an `OPEN TUNING UI` button after the simulated close so the flow can be tested repeatedly
+- Three checkout animations: card insert, card swipe, and contactless tap
+- UI cannot be closed until the purchase animation finishes
+- After a successful browser-demo purchase, the tuning UI closes automatically
+
+No server, Lua, framework, npm, or build step is required.
